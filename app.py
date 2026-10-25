@@ -1,5 +1,6 @@
 """
-KIDZEE Jammu - Institutional Preschool Web Portal & Admissions Engine
+KIDZEE Jammu - Institutional Web Portal & Admissions Engine
+Production-hardened for Render (Linux / Gunicorn) and Localhost
 """
 
 import os
@@ -13,18 +14,23 @@ BASE_DIR = Path(__file__).resolve().parent
 DB_PATH = BASE_DIR / "kidzee_jammu.db"
 
 app = Flask(__name__)
-app.secret_key = os.getenv("FLASK_SECRET_KEY", "kidzee-jammu-secret-2026")
+app.secret_key = os.getenv("FLASK_SECRET_KEY", "kidzee-jammu-prod-key-2026")
 
 ADMIN_USERNAME = os.getenv("ADMIN_USER", "admin")
 ADMIN_PASSWORD = os.getenv("ADMIN_PASS", "KidzeeJammu@2026")
 CENTRE_WHATSAPP_NUMBER = "919086800000"
 
+# ==============================================================================
+# DATABASE LAYER
+# ==============================================================================
 def get_db():
-    conn = sqlite3.connect(str(DB_PATH))
+    """Returns a thread-safe connection with a 10s busy timeout for Linux servers."""
+    conn = sqlite3.connect(str(DB_PATH), timeout=10.0)
     conn.row_factory = sqlite3.Row
     return conn
 
 def init_db():
+    """Initializes tables and seeds data cleanly on every server boot."""
     conn = get_db()
     with conn:
         conn.execute("""
@@ -49,12 +55,12 @@ def init_db():
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 parent_name TEXT NOT NULL,
                 phone TEXT NOT NULL,
-                email TEXT,
-                child_name TEXT,
-                child_dob_or_age TEXT,
+                email TEXT DEFAULT '',
+                child_name TEXT DEFAULT '',
+                child_dob_or_age TEXT DEFAULT '',
                 programme_code TEXT NOT NULL,
-                visit_date TEXT,
-                message TEXT,
+                visit_date TEXT DEFAULT '',
+                message TEXT DEFAULT '',
                 status TEXT DEFAULT 'New',
                 admin_notes TEXT DEFAULT '',
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
@@ -72,22 +78,24 @@ def init_db():
 
         defaults = [
             ("branch_name", "KIDZEE Jammu"),
-            ("branch_address", "H.No : 125, New Rehari, Behind Shakuntla, Near Trikuta City Scan - 180001"),
+            ("branch_address", "Gandhi Nagar / Channi Himmat Link Road, Jammu, J&K, 180015"),
             ("branch_phone", "+91 9086800000"),
             ("whatsapp_number", CENTRE_WHATSAPP_NUMBER),
             ("branch_email", "admissions.jammu@kidzee.org"),
-            ("visiting_hours", "Monday to Saturday: 9:00 AM – 3:30 PM")
+            ("visiting_hours", "Monday to Saturday: 9:00 AM – 3:30 PM"),
+            ("hero_headline", "Where Curiosity Meets Joyful Learning"),
+            ("hero_subheadline", "Nurturing early childhood potential through Kidzee's Pentemind pedagogy.")
         ]
         conn.executemany("INSERT OR IGNORE INTO site_settings (key, value) VALUES (?, ?)", defaults)
 
         progs = [
-            ("NUVO", "Nuvo", "1.5 – 2.5 Years", "Sensory Discovery & Motor Readiness",
-             "A secure, gently scaffolded environment designed to ease the toddler's transition from home to social exploration with love and continuous care.", 1),
-            ("PLAYGROUP", "Playgroup", "2.5 – 3.5 Years", "Curiosity & Social Immersion",
+            ("NUVO", "Nuvo", "1.5 – 2.5 Years", "Sensory Discovery & Motor Readiness", 
+             "A secure, gently scaffolded environment designed to ease the toddler's transition from home to social exploration with care.", 1),
+            ("PLAYGROUP", "Playgroup", "2.5 – 3.5 Years", "Curiosity & Social Immersion", 
              "Encourages linguistic expression, peer play, tactile exploration, self-awareness, and foundational motor mastery.", 2),
-            ("NURSERY", "Nursery", "3.5 – 4.5 Years", "Structured Inquiry & Expression",
+            ("NURSERY", "Nursery", "3.5 – 4.5 Years", "Structured Inquiry & Expression", 
              "Introduces phonemic recognition, early number sense, dynamic storytelling, spatial awareness, and collaborative habits.", 3),
-            ("KINDERGARTEN", "Kindergarten", "4.5 – 6.0 Years", "Cognitive Synthesis & School Readiness",
+            ("KINDERGARTEN", "Kindergarten", "4.5 – 6.0 Years", "Cognitive Synthesis & School Readiness", 
              "Fosters full primary-school readiness through structured phonics, early arithmetic, and creative synthesis.", 4)
         ]
         conn.executemany("""
@@ -96,6 +104,7 @@ def init_db():
         """, progs)
     conn.close()
 
+# Initialize immediately when Gunicorn loads the file
 init_db()
 
 def record_traffic(endpoint_name):
@@ -110,16 +119,29 @@ def record_traffic(endpoint_name):
     except Exception:
         pass
 
+# ==============================================================================
+# PUBLIC ROUTES
+# ==============================================================================
 @app.route("/")
 def home():
     record_traffic("Home")
     conn = get_db()
     rows = conn.execute("SELECT key, value FROM site_settings").fetchall()
     settings = {r["key"]: r["value"] for r in rows}
+    
+    # Fallback dictionary keys to ensure template rendering never fails
+    settings.setdefault("branch_name", "KIDZEE Jammu")
+    settings.setdefault("branch_address", "Gandhi Nagar / Channi Himmat Link Road, Jammu, J&K, 180015")
+    settings.setdefault("branch_phone", "+91 9086800000")
+    settings.setdefault("branch_email", "admissions.jammu@kidzee.org")
+    settings.setdefault("visiting_hours", "Monday to Saturday: 9:00 AM – 3:30 PM")
+    settings.setdefault("hero_headline", "Where Curiosity Meets Joyful Learning")
+    settings.setdefault("hero_subheadline", "Nurturing early childhood potential through Kidzee's Pentemind pedagogy.")
 
     prog_rows = conn.execute("SELECT * FROM programmes ORDER BY display_order ASC").fetchall()
     programmes = [dict(r) for r in prog_rows]
     conn.close()
+    
     return render_template("index.html", settings=settings, programmes=programmes)
 
 @app.route("/api/enquiry", methods=["POST"])
@@ -169,6 +191,9 @@ def submit_enquiry():
         "whatsapp_url": wa_url
     })
 
+# ==============================================================================
+# ADMIN ROUTES
+# ==============================================================================
 @app.route("/admin/login", methods=["GET", "POST"])
 def admin_login():
     error = None
@@ -194,7 +219,7 @@ def admin_dashboard():
     conn = get_db()
     total_views = conn.execute("SELECT COUNT(*) as cnt FROM page_views").fetchone()["cnt"]
     today_views = conn.execute("SELECT COUNT(*) as cnt FROM page_views WHERE date(timestamp) = date('now')").fetchone()["cnt"]
-
+    
     enquiries_raw = conn.execute("SELECT * FROM enquiries ORDER BY created_at DESC").fetchall()
     enquiries = [dict(r) for r in enquiries_raw]
     total_enquiries = len(enquiries)
@@ -204,6 +229,11 @@ def admin_dashboard():
     rows = conn.execute("SELECT key, value FROM site_settings").fetchall()
     settings = {r["key"]: r["value"] for r in rows}
     conn.close()
+
+    settings.setdefault("branch_address", "Gandhi Nagar / Channi Himmat Link Road, Jammu, J&K, 180015")
+    settings.setdefault("branch_email", "admissions.jammu@kidzee.org")
+    settings.setdefault("branch_phone", "+91 9086800000")
+    settings.setdefault("visiting_hours", "Monday to Saturday: 9:00 AM – 3:30 PM")
 
     stats = {
         "total_views": total_views,
@@ -249,4 +279,4 @@ def update_status():
     return jsonify({"success": False}), 400
 
 if __name__ == "__main__":
-    app.run(debug=True, host="127.0.0.1", port=8000)
+    app.run(debug=True, host="127.0.0.1", port=5000)
