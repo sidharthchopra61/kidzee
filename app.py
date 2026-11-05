@@ -1,6 +1,6 @@
 """
 KIDZEE Jammu - Institutional Web Portal & Admissions Engine
-Production-hardened for Render (Linux / Gunicorn) and Localhost
+Branch: New Rehari, Jammu
 """
 
 import os
@@ -12,25 +12,23 @@ from flask import Flask, render_template, request, jsonify, redirect, url_for, s
 
 BASE_DIR = Path(__file__).resolve().parent
 DB_PATH = BASE_DIR / "kidzee_jammu.db"
+TEMPLATES_DIR = BASE_DIR / "templates"
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder=str(TEMPLATES_DIR))
 app.secret_key = os.getenv("FLASK_SECRET_KEY", "kidzee-jammu-prod-key-2026")
 
 ADMIN_USERNAME = os.getenv("ADMIN_USER", "admin")
 ADMIN_PASSWORD = os.getenv("ADMIN_PASS", "KidzeeJammu@2026")
 CENTRE_WHATSAPP_NUMBER = "919086800000"
 
-# ==============================================================================
-# DATABASE LAYER
-# ==============================================================================
+
 def get_db():
-    """Returns a thread-safe connection with a 10s busy timeout for Linux servers."""
     conn = sqlite3.connect(str(DB_PATH), timeout=10.0)
     conn.row_factory = sqlite3.Row
     return conn
 
+
 def init_db():
-    """Initializes tables and seeds data cleanly on every server boot."""
     conn = get_db()
     with conn:
         conn.execute("""
@@ -77,35 +75,35 @@ def init_db():
         """)
 
         defaults = [
-            ("branch_name", "KIDZEE Jammu"),
-            ("branch_address", "Gandhi Nagar / Channi Himmat Link Road, Jammu, J&K, 180015"),
+            ("branch_name", "KIDZEE New Rehari, Jammu"),
+            ("branch_address", "H.No : 125, New Rehari, Behind Shakuntla, Near Trikuta City Scan, Jammu, J&K - 180001"),
             ("branch_phone", "+91 9086800000"),
             ("whatsapp_number", CENTRE_WHATSAPP_NUMBER),
             ("branch_email", "admissions.jammu@kidzee.org"),
-            ("visiting_hours", "Monday to Saturday: 9:00 AM – 3:30 PM"),
-            ("hero_headline", "Where Curiosity Meets Joyful Learning"),
-            ("hero_subheadline", "Nurturing early childhood potential through Kidzee's Pentemind pedagogy.")
+            ("visiting_hours", "Monday to Saturday: 9:00 AM – 3:30 PM")
         ]
-        conn.executemany("INSERT OR IGNORE INTO site_settings (key, value) VALUES (?, ?)", defaults)
+        conn.executemany("INSERT OR REPLACE INTO site_settings (key, value) VALUES (?, ?)", defaults)
 
         progs = [
-            ("NUVO", "Nuvo", "1.5 – 2.5 Years", "Sensory Discovery & Motor Readiness", 
-             "A secure, gently scaffolded environment designed to ease the toddler's transition from home to social exploration with care.", 1),
-            ("PLAYGROUP", "Playgroup", "2.5 – 3.5 Years", "Curiosity & Social Immersion", 
-             "Encourages linguistic expression, peer play, tactile exploration, self-awareness, and foundational motor mastery.", 2),
-            ("NURSERY", "Nursery", "3.5 – 4.5 Years", "Structured Inquiry & Expression", 
-             "Introduces phonemic recognition, early number sense, dynamic storytelling, spatial awareness, and collaborative habits.", 3),
-            ("KINDERGARTEN", "Kindergarten", "4.5 – 6.0 Years", "Cognitive Synthesis & School Readiness", 
-             "Fosters full primary-school readiness through structured phonics, early arithmetic, and creative synthesis.", 4)
+            ("NUVO", "Nuvo", "1.5 – 2.5 Years", "Sensory Discovery & Warm Transition",
+             "A gentle, secure sanctuary helping toddlers transition smoothly from home to social discovery with care.",
+             1),
+            ("PLAYGROUP", "Playgroup", "2.5 – 3.5 Years", "Curiosity & Social Immersion",
+             "Encourages linguistic expression, peer play, tactile exploration, and foundational motor mastery.", 2),
+            ("NURSERY", "Nursery", "3.5 – 4.5 Years", "Structured Inquiry & Phonics",
+             "Introduces phonemic recognition, early number sense, dynamic storytelling, and collaborative habits.", 3),
+            ("KINDERGARTEN", "Kindergarten", "4.5 – 6.0 Years", "Cognitive Synthesis & School Readiness",
+             "Prepares young minds for primary school rigors with structured early reading and computational logic.", 4)
         ]
         conn.executemany("""
-            INSERT OR IGNORE INTO programmes (code, name, age_group, tagline, description, display_order)
+            INSERT OR REPLACE INTO programmes (code, name, age_group, tagline, description, display_order)
             VALUES (?, ?, ?, ?, ?, ?)
         """, progs)
     conn.close()
 
-# Initialize immediately when Gunicorn loads the file
+
 init_db()
+
 
 def record_traffic(endpoint_name):
     try:
@@ -119,30 +117,20 @@ def record_traffic(endpoint_name):
     except Exception:
         pass
 
-# ==============================================================================
-# PUBLIC ROUTES
-# ==============================================================================
+
 @app.route("/")
 def home():
     record_traffic("Home")
     conn = get_db()
     rows = conn.execute("SELECT key, value FROM site_settings").fetchall()
     settings = {r["key"]: r["value"] for r in rows}
-    
-    # Fallback dictionary keys to ensure template rendering never fails
-    settings.setdefault("branch_name", "KIDZEE Jammu")
-    settings.setdefault("branch_address", "Gandhi Nagar / Channi Himmat Link Road, Jammu, J&K, 180015")
-    settings.setdefault("branch_phone", "+91 9086800000")
-    settings.setdefault("branch_email", "admissions.jammu@kidzee.org")
-    settings.setdefault("visiting_hours", "Monday to Saturday: 9:00 AM – 3:30 PM")
-    settings.setdefault("hero_headline", "Where Curiosity Meets Joyful Learning")
-    settings.setdefault("hero_subheadline", "Nurturing early childhood potential through Kidzee's Pentemind pedagogy.")
 
     prog_rows = conn.execute("SELECT * FROM programmes ORDER BY display_order ASC").fetchall()
     programmes = [dict(r) for r in prog_rows]
     conn.close()
-    
+
     return render_template("index.html", settings=settings, programmes=programmes)
+
 
 @app.route("/api/enquiry", methods=["POST"])
 def submit_enquiry():
@@ -172,7 +160,7 @@ def submit_enquiry():
     conn.close()
 
     wa_text = (
-        f"🎒 *New Admission Enquiry - KIDZEE Jammu*\n\n"
+        f"🎒 *New Admission Enquiry - KIDZEE New Rehari, Jammu*\n\n"
         f"👤 *Parent:* {parent_name}\n"
         f"📞 *Phone:* {phone}\n"
         f"👶 *Child Age/DOB:* {child_dob or 'N/A'}\n"
@@ -191,9 +179,7 @@ def submit_enquiry():
         "whatsapp_url": wa_url
     })
 
-# ==============================================================================
-# ADMIN ROUTES
-# ==============================================================================
+
 @app.route("/admin/login", methods=["GET", "POST"])
 def admin_login():
     error = None
@@ -206,10 +192,12 @@ def admin_login():
         error = "Invalid credentials. Please verify your administrative access."
     return render_template("admin_login.html", error=error)
 
+
 @app.route("/admin/logout")
 def admin_logout():
     session.clear()
     return redirect(url_for("admin_login"))
+
 
 @app.route("/admin")
 def admin_dashboard():
@@ -218,8 +206,9 @@ def admin_dashboard():
 
     conn = get_db()
     total_views = conn.execute("SELECT COUNT(*) as cnt FROM page_views").fetchone()["cnt"]
-    today_views = conn.execute("SELECT COUNT(*) as cnt FROM page_views WHERE date(timestamp) = date('now')").fetchone()["cnt"]
-    
+    today_views = conn.execute("SELECT COUNT(*) as cnt FROM page_views WHERE date(timestamp) = date('now')").fetchone()[
+        "cnt"]
+
     enquiries_raw = conn.execute("SELECT * FROM enquiries ORDER BY created_at DESC").fetchall()
     enquiries = [dict(r) for r in enquiries_raw]
     total_enquiries = len(enquiries)
@@ -230,11 +219,6 @@ def admin_dashboard():
     settings = {r["key"]: r["value"] for r in rows}
     conn.close()
 
-    settings.setdefault("branch_address", "Gandhi Nagar / Channi Himmat Link Road, Jammu, J&K, 180015")
-    settings.setdefault("branch_email", "admissions.jammu@kidzee.org")
-    settings.setdefault("branch_phone", "+91 9086800000")
-    settings.setdefault("visiting_hours", "Monday to Saturday: 9:00 AM – 3:30 PM")
-
     stats = {
         "total_views": total_views,
         "today_views": today_views,
@@ -243,6 +227,7 @@ def admin_dashboard():
         "conversion_rate": conv_rate
     }
     return render_template("admin.html", enquiries=enquiries, stats=stats, settings=settings)
+
 
 @app.route("/admin/save-settings", methods=["POST"])
 def save_settings():
@@ -264,6 +249,7 @@ def save_settings():
 
     return redirect(url_for("admin_dashboard"))
 
+
 @app.route("/admin/update-status", methods=["POST"])
 def update_status():
     if not session.get("is_admin"):
@@ -277,6 +263,7 @@ def update_status():
         conn.close()
         return jsonify({"success": True})
     return jsonify({"success": False}), 400
+
 
 if __name__ == "__main__":
     app.run(debug=True, host="127.0.0.1", port=5000)
