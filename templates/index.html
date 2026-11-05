@@ -3,90 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KIDZEE Jammu | India's #1 Preschool Network | Admissions Open</title>
+    <title>KIDZEE New Rehari, Jammu | India's #1 Preschool | Admissions Open</title>
 
-    <!-- Premium Kidzee Google Fonts -->
+    <!-- Kidzee Official Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700;800&family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;0,6..12,800;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700;800&family=Quicksand:wght@600;700;800&display=swap" rel="stylesheet">
 
-    <!-- FontAwesome 6 Pro Icons -->
+    <!-- FontAwesome 6 Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
         :root {
-            --kz-navy: #082860;
-            --kz-blue: #0A58CA;
-            --kz-sky: #E7F1FF;
-            --kz-yellow: #FFC107;
-            --kz-yellow-warm: #FFA000;
-            --kz-red: #E63946;
-            --kz-green: #2A9D8F;
-            --kz-purple: #7209B7;
-            --kz-orange: #F77F00;
-            --kz-bg: #FCFDFF;
-            --kz-slate: #334155;
-            --kz-muted: #64748B;
+            --kz-yellow: #FFCB05;
+            --kz-yellow-deep: #FFA800;
+            --kz-yellow-soft: #FFF9E0;
+            --kz-blue: #0B5CAB;
+            --kz-blue-dark: #073B70;
+            --kz-blue-soft: #E8F2FC;
+            --kz-cyan: #00A3E0;
+            --kz-red: #ED1C24;
+            --kz-red-soft: #FDE8E9;
+            --kz-green: #78BE20;
+            --kz-green-soft: #EDF7DE;
+            --kz-orange: #FF6A13;
+            --kz-body-bg: #FFFFFF;
+            --kz-section-alt: #F8FBFE;
+            --kz-text-dark: #1E293B;
+            --kz-text-muted: #556987;
+            --kz-border: #E2E8F0;
             --kz-whatsapp: #25D366;
-            --kz-whatsapp-dark: #1EBE5D;
-            --radius-bubble: 32px;
-            --shadow-float: 0 20px 40px -15px rgba(8, 40, 96, 0.12);
-            --shadow-card: 0 10px 30px -5px rgba(8, 40, 96, 0.08);
+            --kz-whatsapp-hover: #1EBE5D;
+            --radius-curved: 28px;
+            --radius-pill: 50px;
+            --shadow-subtle: 0 10px 25px -5px rgba(11, 92, 171, 0.08);
+            --shadow-card: 0 16px 32px -8px rgba(11, 92, 171, 0.12);
+            --shadow-float: 0 24px 48px -12px rgba(11, 92, 171, 0.16);
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
 
         body {
-            font-family: 'Nunito Sans', sans-serif;
-            color: var(--kz-slate);
-            background-color: var(--kz-bg);
+            font-family: 'Quicksand', sans-serif;
+            color: var(--kz-text-dark);
+            background-color: var(--kz-body-bg);
             line-height: 1.6;
             overflow-x: hidden;
         }
 
         h1, h2, h3, h4, h5, .brand-font {
             font-family: 'Fredoka', cursive;
-            color: var(--kz-navy);
-            font-weight: 700;
+            color: var(--kz-blue-dark);
             letter-spacing: 0.3px;
         }
 
-        /* Top Notification Bar */
-        .top-ticker {
-            background: linear-gradient(90deg, #E63946 0%, #F77F00 50%, #FFC107 100%);
+        /* Top Announcement Strip */
+        .top-strip {
+            background: linear-gradient(90deg, var(--kz-red) 0%, var(--kz-orange) 50%, var(--kz-yellow) 100%);
             color: #FFFFFF;
-            padding: 9px 20px;
-            font-size: 0.9rem;
+            padding: 8px 30px;
+            font-size: 0.88rem;
             font-weight: 800;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        .top-ticker a {
+        .top-strip a {
             color: #FFFFFF;
             text-decoration: underline;
-            margin-left: 8px;
+            margin-left: 10px;
         }
-        .admin-link-pill {
+        .staff-pill {
             background: rgba(0, 0, 0, 0.25);
             padding: 3px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            text-decoration: none !important;
+            border-radius: var(--radius-pill);
             color: #FFFFFF !important;
+            font-size: 0.78rem;
+            text-decoration: none !important;
         }
 
-        /* Navigation */
-        nav.kz-navbar {
+        /* Clean White Navigation */
+        nav.kz-nav {
             background: #FFFFFF;
-            padding: 16px 40px;
+            padding: 12px 36px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+            box-shadow: 0 4px 20px rgba(11, 92, 171, 0.06);
+            border-bottom: 3px solid var(--kz-yellow);
         }
 
         .brand-unit {
@@ -95,132 +103,165 @@
             gap: 12px;
             text-decoration: none;
         }
-        .brand-logo-text {
-            font-size: 2.7rem;
+
+        .kidzee-logo-badge {
+            background: var(--kz-yellow);
+            padding: 8px 20px;
+            border-radius: 40px;
+            display: inline-flex;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(255, 203, 5, 0.4), inset 0 2px 0 rgba(255, 255, 255, 0.6);
+            border: 2px solid #FFFFFF;
+        }
+
+        .logo-letters {
+            font-family: 'Fredoka', cursive;
+            font-size: 2.5rem;
             font-weight: 800;
             line-height: 1;
-            letter-spacing: -1px;
+            letter-spacing: 0.5px;
+            text-shadow: 2px 2px 0 #FFFFFF, -1px -1px 0 #FFFFFF, 1px -1px 0 #FFFFFF, -1px 1px 0 #FFFFFF;
         }
-        .l-k { color: var(--kz-red); }
-        .l-i { color: var(--kz-yellow); }
-        .l-d { color: var(--kz-blue); }
-        .l-z { color: var(--kz-green); }
-        .l-e1 { color: var(--kz-orange); }
-        .l-e2 { color: var(--kz-red); }
+        .l-k { color: #ED1C24; }
+        .l-i { color: #00A3E0; }
+        .l-d { color: #0B5CAB; }
+        .l-z { color: #78BE20; }
+        .l-e1 { color: #FF6A13; }
+        .l-e2 { color: #ED1C24; }
 
-        .branch-badge {
-            background: var(--kz-sky);
-            color: var(--kz-blue);
-            border: 2px solid #BFD8FF;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
+        .jammu-badge {
+            background: var(--kz-blue);
+            color: #FFFFFF;
             font-weight: 800;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.82rem;
             text-transform: uppercase;
+            box-shadow: 0 2px 6px rgba(11, 92, 171, 0.25);
         }
 
+        /* Specific Top Navigation Tabs */
         .nav-menu {
             display: flex;
             list-style: none;
-            gap: 28px;
+            gap: 24px;
             align-items: center;
         }
         .nav-menu a {
             text-decoration: none;
-            color: var(--kz-navy);
-            font-weight: 700;
+            color: var(--kz-blue-dark);
+            font-weight: 800;
             font-size: 1.05rem;
             transition: color 0.2s;
         }
-        .nav-menu a:hover { color: var(--kz-blue); }
+        .nav-menu a:hover { color: var(--kz-red); }
+
+        .btn-enroll-nav {
+            background: var(--kz-red);
+            color: #FFFFFF !important;
+            padding: 10px 22px;
+            border-radius: var(--radius-pill);
+            font-weight: 800;
+            font-size: 1rem;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(237, 28, 36, 0.3);
+            transition: all 0.2s;
+        }
+        .btn-enroll-nav:hover {
+            background: #D9161E;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(237, 28, 36, 0.4);
+        }
 
         .btn-wa-header {
             background: var(--kz-whatsapp);
             color: white !important;
-            padding: 12px 22px;
-            border-radius: 50px;
+            padding: 10px 20px;
+            border-radius: var(--radius-pill);
             font-weight: 800;
             display: flex;
             align-items: center;
             gap: 8px;
-            box-shadow: 0 6px 16px rgba(37, 211, 102, 0.3);
             text-decoration: none;
+            box-shadow: 0 4px 14px rgba(37, 211, 102, 0.3);
             transition: all 0.2s;
         }
         .btn-wa-header:hover {
-            background: var(--kz-whatsapp-dark);
+            background: var(--kz-whatsapp-hover);
             transform: translateY(-2px);
         }
 
-        /* Hero Section */
-        .hero-banner {
-            background: radial-gradient(circle at 10% 20%, #EBF4FF 0%, #FFFFFF 90%);
+        /* Hero Banner */
+        .hero {
+            background: radial-gradient(circle at 10% 20%, #E8F4FC 0%, #FFFDF5 90%);
             padding: 60px 40px 100px;
             position: relative;
         }
-        .hero-grid {
+        .hero-layout {
             max-width: 1280px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 1.25fr 1fr;
+            grid-template-columns: 1.2fr 1fr;
             gap: 50px;
             align-items: center;
         }
+
         .hero-left h1 {
-            font-size: 3.5rem;
+            font-size: 3.6rem;
             line-height: 1.15;
+            color: var(--kz-blue-dark);
             margin-bottom: 20px;
         }
-        .hero-left h1 span.accent {
+        .hero-left h1 span.highlight {
             color: var(--kz-red);
-            background: #FFE3E5;
+            background: #FFE5E6;
             padding: 2px 14px;
             border-radius: 16px;
         }
         .hero-left p {
-            font-size: 1.25rem;
-            color: var(--kz-muted);
+            font-size: 1.2rem;
+            color: var(--kz-text-muted);
             margin-bottom: 30px;
             font-weight: 600;
             max-width: 600px;
         }
 
-        .hero-metrics {
+        .stats-badge-grid {
             display: flex;
-            gap: 20px;
+            gap: 16px;
             margin-top: 30px;
         }
-        .metric-pill {
+        .stat-badge {
             background: #FFFFFF;
             border: 2px dashed #B8D5FF;
-            padding: 14px 22px;
             border-radius: 20px;
-            text-align: center;
+            padding: 16px 20px;
             flex: 1;
-            box-shadow: 0 4px 12px rgba(10, 88, 202, 0.05);
+            text-align: center;
+            box-shadow: var(--shadow-subtle);
         }
-        .metric-pill strong {
+        .stat-badge strong {
             display: block;
-            font-size: 1.9rem;
+            font-size: 2rem;
             font-family: 'Fredoka', cursive;
             color: var(--kz-blue);
         }
-        .metric-pill span {
+        .stat-badge span {
             font-size: 0.85rem;
-            color: var(--kz-muted);
-            font-weight: 700;
+            color: var(--kz-text-muted);
+            font-weight: 800;
         }
 
-        /* Direct Admission Form Card */
-        .admissions-hero-card {
+        /* Admission Form Card */
+        .hero-form-card {
             background: #FFFFFF;
-            border-radius: var(--radius-bubble);
-            padding: 36px;
+            border: 4px solid var(--kz-yellow);
+            border-radius: var(--radius-curved);
+            padding: 34px;
             box-shadow: var(--shadow-float);
-            border: 3px solid #FFE699;
             position: relative;
         }
-        .card-ribbon {
+        .ribbon-tag {
             position: absolute;
             top: -16px;
             right: 28px;
@@ -230,27 +271,29 @@
             font-weight: 800;
             padding: 6px 18px;
             border-radius: 20px;
-            box-shadow: 0 4px 10px rgba(230, 57, 70, 0.35);
+            box-shadow: 0 4px 10px rgba(237, 28, 36, 0.35);
+            font-family: 'Fredoka', cursive;
         }
-        .admissions-hero-card h3 {
+        .hero-form-card h3 {
             font-size: 1.8rem;
-            margin-bottom: 6px;
+            color: var(--kz-blue-dark);
+            margin-bottom: 4px;
         }
-        .admissions-hero-card p.form-sub {
-            font-size: 0.95rem;
-            color: var(--kz-muted);
+        .hero-form-card p.form-sub {
+            font-size: 0.92rem;
+            color: var(--kz-text-muted);
             margin-bottom: 20px;
-            font-weight: 600;
+            font-weight: 700;
         }
 
         .form-group { margin-bottom: 14px; }
         .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-        label { display: block; font-weight: 800; font-size: 0.88rem; margin-bottom: 6px; color: var(--kz-navy); }
+        label { display: block; font-weight: 800; font-size: 0.88rem; margin-bottom: 6px; color: var(--kz-blue-dark); }
 
         input, select, textarea {
             width: 100%;
             padding: 12px 16px;
-            border: 2px solid #E2E8F0;
+            border: 2px solid var(--kz-border);
             border-radius: 14px;
             font-family: inherit;
             font-size: 0.95rem;
@@ -260,12 +303,12 @@
         input:focus, select:focus, textarea:focus {
             outline: none;
             border-color: var(--kz-blue);
-            box-shadow: 0 0 0 4px rgba(10, 88, 202, 0.12);
+            box-shadow: 0 0 0 4px rgba(11, 92, 171, 0.12);
         }
 
-        .btn-submit-hero {
-            background: linear-gradient(90deg, #E63946 0%, #F77F00 100%);
-            color: white;
+        .btn-enq-submit {
+            background: linear-gradient(90deg, var(--kz-red) 0%, var(--kz-orange) 100%);
+            color: #FFFFFF;
             font-size: 1.15rem;
             font-family: 'Fredoka', cursive;
             padding: 16px;
@@ -273,16 +316,16 @@
             border-radius: 16px;
             cursor: pointer;
             width: 100%;
-            font-weight: 700;
-            box-shadow: 0 8px 20px rgba(230, 57, 70, 0.3);
+            font-weight: 800;
+            box-shadow: 0 8px 20px rgba(237, 28, 36, 0.3);
             transition: all 0.2s;
         }
-        .btn-submit-hero:hover {
+        .btn-enq-submit:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 24px rgba(230, 57, 70, 0.4);
+            box-shadow: 0 10px 24px rgba(237, 28, 36, 0.4);
         }
 
-        /* SVG Wave Separator */
+        /* Wave Divider */
         .wave-bottom {
             position: relative;
             width: 100%;
@@ -297,38 +340,39 @@
             height: 60px;
         }
 
-        /* Pentemind Showcase */
-        .content-container {
+        /* Content Container */
+        .page-wrap {
             max-width: 1280px;
             margin: 0 auto;
             padding: 80px 24px;
         }
-        .section-headline {
+        .section-header {
             text-align: center;
             margin-bottom: 50px;
         }
-        .section-headline span.tag {
-            background: var(--kz-sky);
+        .section-header span.pill-category {
+            background: var(--kz-blue-soft);
             color: var(--kz-blue);
             font-weight: 800;
-            padding: 6px 16px;
+            padding: 6px 18px;
             border-radius: 20px;
             font-size: 0.85rem;
             text-transform: uppercase;
         }
-        .section-headline h2 {
+        .section-header h2 {
             font-size: 2.8rem;
             margin-top: 12px;
             margin-bottom: 12px;
         }
-        .section-headline p {
-            color: var(--kz-muted);
+        .section-header p {
+            color: var(--kz-text-muted);
             font-size: 1.15rem;
             font-weight: 600;
-            max-width: 650px;
+            max-width: 680px;
             margin: 0 auto;
         }
 
+        /* Pentemind Philosophy Grid */
         .pentemind-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -339,17 +383,18 @@
             border-radius: 24px;
             padding: 30px 24px;
             text-align: center;
-            box-shadow: var(--shadow-card);
-            border: 2px solid transparent;
+            box-shadow: var(--shadow-subtle);
+            border: 2px solid var(--kz-border);
             transition: all 0.25s ease;
         }
         .pentemind-card:hover {
             transform: translateY(-8px);
-            border-color: #E2E8F0;
+            border-color: var(--kz-yellow);
+            box-shadow: var(--shadow-card);
         }
         .p-icon-box {
-            width: 76px;
-            height: 76px;
+            width: 74px;
+            height: 74px;
             border-radius: 50%;
             margin: 0 auto 20px;
             display: flex;
@@ -357,27 +402,27 @@
             justify-content: center;
             font-size: 2rem;
         }
-        .p1 .p-icon-box { background: #E7F1FF; color: var(--kz-blue); }
-        .p2 .p-icon-box { background: #FFEBD6; color: var(--kz-orange); }
-        .p3 .p-icon-box { background: #FFE8E8; color: var(--kz-red); }
-        .p4 .p-icon-box { background: #E2F6F0; color: var(--kz-green); }
-        .p5 .p-icon-box { background: #F3E8FF; color: var(--kz-purple); }
+        .pentemind-card:nth-child(1) .p-icon-box { background: var(--kz-blue-soft); color: var(--kz-blue); }
+        .pentemind-card:nth-child(2) .p-icon-box { background: var(--kz-yellow-soft); color: var(--kz-orange); }
+        .pentemind-card:nth-child(3) .p-icon-box { background: var(--kz-red-soft); color: var(--kz-red); }
+        .pentemind-card:nth-child(4) .p-icon-box { background: var(--kz-green-soft); color: var(--kz-green); }
+        .pentemind-card:nth-child(5) .p-icon-box { background: #E6F7FF; color: var(--kz-cyan); }
 
-        .pentemind-card h4 { font-size: 1.3rem; margin-bottom: 10px; }
-        .pentemind-card p { font-size: 0.95rem; color: var(--kz-muted); font-weight: 600; }
+        .pentemind-card h4 { font-size: 1.3rem; margin-bottom: 8px; }
+        .pentemind-card p { font-size: 0.95rem; color: var(--kz-text-muted); font-weight: 600; }
 
-        /* Programme Cards */
-        .programme-grid {
+        /* Programmes Grid */
+        .prog-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
         }
         .prog-card {
             background: #FFFFFF;
-            border-radius: var(--radius-bubble);
+            border-radius: var(--radius-curved);
             overflow: hidden;
-            box-shadow: var(--shadow-card);
-            border: 2px solid #EDF2F7;
+            box-shadow: var(--shadow-subtle);
+            border: 2px solid var(--kz-border);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -385,32 +430,33 @@
         }
         .prog-card:hover {
             transform: translateY(-6px);
-            box-shadow: var(--shadow-float);
+            border-color: var(--kz-blue);
+            box-shadow: var(--shadow-card);
         }
-        .prog-image-wrap {
-            height: 190px;
+        .prog-media {
+            height: 200px;
             overflow: hidden;
             position: relative;
         }
-        .prog-image-wrap img {
+        .prog-media img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.4s;
         }
-        .prog-card:hover .prog-image-wrap img { transform: scale(1.05); }
+        .prog-card:hover .prog-media img { transform: scale(1.05); }
 
         .prog-age-tag {
             position: absolute;
             bottom: 14px;
             left: 16px;
-            background: rgba(8, 40, 96, 0.85);
-            backdrop-filter: blur(4px);
-            color: #FFFFFF;
+            background: var(--kz-blue-dark);
+            color: var(--kz-yellow);
             font-weight: 800;
             padding: 4px 14px;
             border-radius: 20px;
             font-size: 0.82rem;
+            border: 1px solid var(--kz-yellow);
         }
         .prog-body {
             padding: 26px;
@@ -421,10 +467,10 @@
         }
         .prog-body h3 { font-size: 1.6rem; margin-bottom: 6px; }
         .prog-tagline { color: var(--kz-orange); font-weight: 800; font-size: 0.95rem; margin-bottom: 12px; }
-        .prog-body p { font-size: 0.95rem; color: var(--kz-muted); margin-bottom: 20px; font-weight: 600; }
+        .prog-body p { font-size: 0.95rem; color: var(--kz-text-muted); margin-bottom: 20px; font-weight: 600; }
 
-        .btn-enquire-card {
-            background: var(--kz-sky);
+        .btn-prog-select {
+            background: var(--kz-blue-soft);
             color: var(--kz-blue);
             text-align: center;
             text-decoration: none;
@@ -434,18 +480,66 @@
             font-size: 0.95rem;
             transition: all 0.2s;
         }
-        .btn-enquire-card:hover {
-            background: var(--kz-blue);
-            color: #FFFFFF;
+        .btn-prog-select:hover {
+            background: var(--kz-yellow);
+            color: var(--kz-blue-dark);
         }
 
-        /* Safety & Facilities Band */
-        .safety-wrapper {
-            background: var(--kz-navy);
-            border-radius: 40px;
-            padding: 60px;
+        /* Locate Us: Exact Address Card & Google Map */
+        .locate-us-box {
+            background: #FFFFFF;
+            border: 3px solid var(--kz-yellow);
+            border-radius: var(--radius-curved);
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+            display: grid;
+            grid-template-columns: 1fr 1.3fr;
+        }
+        .locate-details {
+            padding: 44px;
+            background: var(--kz-blue-soft);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .locate-details h3 {
+            font-size: 2rem;
+            color: var(--kz-blue-dark);
+            margin-bottom: 16px;
+        }
+        .locate-info-card {
+            background: #FFFFFF;
+            border: 2px solid var(--kz-border);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .locate-info-card p {
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: var(--kz-text-dark);
+            line-height: 1.7;
+        }
+        .map-frame-wrap {
+            width: 100%;
+            height: 100%;
+            min-height: 440px;
+        }
+        .map-frame-wrap iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            display: block;
+        }
+
+        /* Safety & Campus Care Band */
+        .safety-band {
+            background: linear-gradient(135deg, var(--kz-blue-dark) 0%, var(--kz-blue) 100%);
+            border-radius: 36px;
+            padding: 60px 48px;
             color: #FFFFFF;
             margin: 40px auto;
+            border: 3px solid var(--kz-yellow);
         }
         .safety-grid {
             display: grid;
@@ -453,22 +547,22 @@
             gap: 30px;
             margin-top: 40px;
         }
-        .safety-card {
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.12);
+        .safety-item {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 203, 5, 0.3);
             border-radius: 20px;
             padding: 28px;
         }
-        .safety-card i {
+        .safety-item i {
             font-size: 2.2rem;
             color: var(--kz-yellow);
             margin-bottom: 16px;
         }
-        .safety-card h4 { font-size: 1.3rem; color: #FFFFFF; margin-bottom: 8px; }
-        .safety-card p { font-size: 0.9rem; color: #CBD5E1; font-weight: 600; }
+        .safety-item h4 { font-size: 1.3rem; color: #FFFFFF; margin-bottom: 8px; }
+        .safety-item p { font-size: 0.92rem; color: #E8F2FC; font-weight: 600; }
 
         /* Floating WhatsApp Button */
-        .wa-float-bubble {
+        .wa-float-btn {
             position: fixed;
             bottom: 30px;
             right: 30px;
@@ -486,16 +580,16 @@
             text-decoration: none;
             transition: all 0.2s;
         }
-        .wa-float-bubble:hover {
+        .wa-float-btn:hover {
             transform: scale(1.1);
-            background: var(--kz-whatsapp-dark);
         }
 
         /* Footer */
         footer.kz-footer {
-            background: #041432;
-            color: #94A3B8;
+            background: var(--kz-blue-dark);
+            color: #CBD5E1;
             padding: 70px 40px 30px;
+            border-top: 4px solid var(--kz-yellow);
         }
         .footer-grid {
             max-width: 1280px;
@@ -518,7 +612,7 @@
         .footer-bottom {
             max-width: 1280px;
             margin: 0 auto;
-            border-top: 1px solid #1E293B;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
             padding-top: 24px;
             text-align: center;
             font-size: 0.9rem;
@@ -526,65 +620,71 @@
         }
 
         @media (max-width: 992px) {
-            .hero-grid { grid-template-columns: 1fr; }
+            .hero-layout { grid-template-columns: 1fr; }
+            .locate-us-box { grid-template-columns: 1fr; }
             .nav-menu { display: none; }
             .footer-grid { grid-template-columns: 1fr; }
-            nav.kz-navbar { padding: 14px 20px; }
-            .safety-wrapper { padding: 30px; }
+            nav.kz-nav { padding: 12px 20px; }
+            .safety-band { padding: 36px 24px; }
         }
     </style>
 </head>
 <body>
 
     <!-- Notification Header -->
-    <div class="top-ticker">
+    <div class="top-strip">
         <div>
-            📢 <strong>Admissions Open 2026-27:</strong> Limited Seats Available in Nuvo & Playgroup at KIDZEE Jammu.
+            🌟 <strong>Admissions Open 2026-27:</strong> KIDZEE New Rehari Branch, Jammu.
         </div>
         <div>
             <span>Helpline:</span> <a href="tel:9086800000">📞 +91 9086800000</a>
-            <a href="/admin/login" class="admin-link-pill">Staff Login</a>
+            <a href="/admin/login" class="staff-pill">Staff Login</a>
         </div>
     </div>
 
-    <!-- Official Styled Navbar -->
-    <nav class="kz-navbar">
-        <a href="/" class="brand-unit">
-            <div class="brand-logo-text">
-                <span class="l-k">K</span><span class="l-i">I</span><span class="l-d">D</span><span class="l-z">Z</span><span class="l-e1">E</span><span class="l-e2">E</span>
+    <!-- Official Brand Navbar -->
+    <nav class="kz-nav">
+        <a href="#home" class="brand-unit">
+            <div class="kidzee-logo-badge">
+                <span class="logo-letters">
+                    <span class="l-k">K</span><span class="l-i">I</span><span class="l-d">D</span><span class="l-z">Z</span><span class="l-e1">E</span><span class="l-e2">E</span>
+                </span>
             </div>
-            <span class="branch-badge">Jammu</span>
+            <span class="jammu-badge">New Rehari</span>
         </a>
 
+        <!-- Top Navigation Links -->
         <ul class="nav-menu">
-            <li><a href="#pedagogy">Pentemind Pedagogy</a></li>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#pentemind">Pentemind</a></li>
             <li><a href="#programmes">Programmes</a></li>
-            <li><a href="#facilities">Campus Safety</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#locate-us">Locate Us</a></li>
+            <li><a href="#enquiryCard" class="btn-enroll-nav">Enroll Your Child</a></li>
         </ul>
 
         <a href="https://wa.me/919086800000?text=Hello%20Kidzee%20Jammu,%20I%20would%20like%20to%20inquire%20about%20preschool%20admissions" target="_blank" class="btn-wa-header">
-            <i class="fa-brands fa-whatsapp"></i> Chat for Admissions
+            <i class="fa-brands fa-whatsapp"></i> WhatsApp
         </a>
     </nav>
 
-    <!-- Main Hero Presentation -->
-    <section class="hero-banner">
-        <div class="hero-grid">
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-layout">
             <div class="hero-left">
-                <h1>Where Curiosity Meets <span class="accent">Joyful Learning</span></h1>
-                <p>Nurturing every child's unique capabilities with India's pioneer early-childhood network right here in Jammu.</p>
+                <h1>Where Learning Begins With <span class="highlight">Wonder & Joy</span></h1>
+                <p>Nurturing every child's potential at KIDZEE New Rehari, Jammu. Powered by India's trusted Pentemind pedagogy in a secure, loving environment.</p>
 
-                <div class="hero-metrics">
-                    <div class="metric-pill">
+                <div class="stats-badge-grid">
+                    <div class="stat-badge">
                         <strong>2,000+</strong>
-                        <span>Centres Across India</span>
+                        <span>Centres Nationwide</span>
                     </div>
-                    <div class="metric-pill">
+                    <div class="stat-badge">
                         <strong>1.5M+</strong>
                         <span>Happy Alumni</span>
                     </div>
-                    <div class="metric-pill">
+                    <div class="stat-badge">
                         <strong>100%</strong>
                         <span>Play-Based Learning</span>
                     </div>
@@ -592,10 +692,10 @@
             </div>
 
             <!-- Integrated Direct Admission Form -->
-            <div class="admissions-hero-card" id="enquiryCard">
-                <div class="card-ribbon">Session 2026-27</div>
-                <h3>Apply for Admission</h3>
-                <p class="form-sub">Direct instant forwarding to the Jammu Desk on <strong>9086800000</strong></p>
+            <div class="hero-form-card" id="enquiryCard">
+                <div class="ribbon-tag">Session 2026-27</div>
+                <h3>Enroll Your Child</h3>
+                <p class="form-sub">Direct instant forwarding to Jammu desk on <strong>9086800000</strong></p>
 
                 <form id="enquiryForm">
                     <div class="form-group">
@@ -604,7 +704,7 @@
                     </div>
                     <div class="form-row">
                         <div class="form-group">
-                            <label>Mobile Contact (10 Digits) *</label>
+                            <label>Mobile Number (10 Digits) *</label>
                             <input type="tel" id="phone" required placeholder="9086800000">
                         </div>
                         <div class="form-group">
@@ -627,11 +727,11 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>Any Specific Questions?</label>
-                        <textarea id="message" rows="2" placeholder="Ask about bus routes, teacher ratios, timing..."></textarea>
+                        <label>Questions or Notes</label>
+                        <textarea id="message" rows="2" placeholder="Transportation routes, teacher ratios, etc."></textarea>
                     </div>
 
-                    <button type="submit" class="btn-submit-hero" id="submitBtn">
+                    <button type="submit" class="btn-enq-submit" id="submitBtn">
                         <i class="fa-brands fa-whatsapp"></i> Send Direct Enquiry to School
                     </button>
                     <div id="statusBox" style="display:none; padding:12px; border-radius:12px; font-weight:700; margin-top:14px; text-align:center;"></div>
@@ -647,36 +747,68 @@
         </svg>
     </div>
 
+    <!-- About Section -->
+    <section class="page-wrap" id="about">
+        <div class="section-header">
+            <span class="pill-category">About Kidzee</span>
+            <h2>India's Pioneer in Early Childhood Care</h2>
+            <p>Kidzee has nurtured over 1.5 million children across 750+ cities, pioneering research-backed early childhood development methods.</p>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+            <div style="background: white; border: 2px solid var(--kz-border); border-radius: 20px; padding: 32px; box-shadow: var(--shadow-subtle);">
+                <div style="font-size: 2rem; color: var(--kz-blue); margin-bottom: 12px;"><i class="fa-solid fa-graduation-cap"></i></div>
+                <h3>The Illume Pedagogy</h3>
+                <p style="color: var(--kz-text-muted); font-weight: 600; margin-top: 8px;">
+                    We believe every child is born unique with distinct learning styles. The Illume curriculum respects each child's natural pace and curiosity rather than imposing rigid memorization.
+                </p>
+            </div>
+            <div style="background: white; border: 2px solid var(--kz-border); border-radius: 20px; padding: 32px; box-shadow: var(--shadow-subtle);">
+                <div style="font-size: 2rem; color: var(--kz-orange); margin-bottom: 12px;"><i class="fa-solid fa-shapes"></i></div>
+                <h3>Multiple Intelligences</h3>
+                <p style="color: var(--kz-text-muted); font-weight: 600; margin-top: 8px;">
+                    Inspired by Dr. Howard Gardner’s research, our classrooms stimulate linguistic, spatial, musical, kinesthetic, logical, and interpersonal capabilities through experiential discovery.
+                </p>
+            </div>
+            <div style="background: white; border: 2px solid var(--kz-border); border-radius: 20px; padding: 32px; box-shadow: var(--shadow-subtle);">
+                <div style="font-size: 2rem; color: var(--kz-green); margin-bottom: 12px;"><i class="fa-solid fa-hand-holding-heart"></i></div>
+                <h3>New Rehari, Jammu Campus</h3>
+                <p style="color: var(--kz-text-muted); font-weight: 600; margin-top: 8px;">
+                    Our New Rehari centre brings this national legacy to Jammu with low student-teacher ratios, certified educators, pediatric first-aid, and an empathetic learning atmosphere.
+                </p>
+            </div>
+        </div>
+    </section>
+
     <!-- Pentemind Framework Section -->
-    <section class="content-container" id="pedagogy">
-        <div class="section-headline">
-            <span class="tag">Proprietary Curriculum</span>
+    <section class="page-wrap" id="pentemind" style="padding-top: 0;">
+        <div class="section-header">
+            <span class="pill-category">Proprietary Curriculum</span>
             <h2>The Pentemind™ Advantage</h2>
-            <p>Kidzee's validated pedagogy scientifically nurtures five foundational areas of early childhood development.</p>
+            <p>Kidzee's validated pedagogy scientifically nurtures five foundational capabilities of early childhood development.</p>
         </div>
 
         <div class="pentemind-grid">
-            <div class="pentemind-card p1">
+            <div class="pentemind-card">
                 <div class="p-icon-box"><i class="fa-solid fa-brain"></i></div>
                 <h4>Cognitive Focus</h4>
                 <p>Logical reasoning, spatial patterns, early numeracy, and playful problem solving.</p>
             </div>
-            <div class="pentemind-card p2">
+            <div class="pentemind-card">
                 <div class="p-icon-box"><i class="fa-solid fa-heart"></i></div>
                 <h4>Self-Awareness</h4>
                 <p>Emotional resilience, positive identity, autonomy, and confident expression.</p>
             </div>
-            <div class="pentemind-card p3">
+            <div class="pentemind-card">
                 <div class="p-icon-box"><i class="fa-solid fa-people-roof"></i></div>
                 <h4>Social Readiness</h4>
                 <p>Sharing, active listening, respectful teamwork, and empathetic peer bonding.</p>
             </div>
-            <div class="pentemind-card p4">
+            <div class="pentemind-card">
                 <div class="p-icon-box"><i class="fa-solid fa-person-running"></i></div>
                 <h4>Motor Precision</h4>
-                <p>Fine motor pencil grasp, sensory balance, agility, and coordinate movement.</p>
+                <p>Fine motor pencil grasp, sensory balance, agility, and coordinated movement.</p>
             </div>
-            <div class="pentemind-card p5">
+            <div class="pentemind-card">
                 <div class="p-icon-box"><i class="fa-solid fa-palette"></i></div>
                 <h4>Creative Spark</h4>
                 <p>Artistic exploration, rhythmic movement, music, and imaginative storytelling.</p>
@@ -684,18 +816,18 @@
         </div>
     </section>
 
-    <!-- Verified Academic Programmes Showcase -->
-    <section class="content-container" id="programmes" style="padding-top:0;">
-        <div class="section-headline">
-            <span class="tag">Academic Levels</span>
+    <!-- Academic Programmes Showcase -->
+    <section class="page-wrap" id="programmes" style="padding-top: 0;">
+        <div class="section-header">
+            <span class="pill-category">Academic Levels</span>
             <h2>Nurturing Early Childhood Pathways</h2>
             <p>Every classroom is ergonomically tailored to match your toddler's precise developmental milestone.</p>
         </div>
 
-        <div class="programme-grid">
+        <div class="prog-grid">
             <!-- Nuvo -->
             <div class="prog-card">
-                <div class="prog-image-wrap">
+                <div class="prog-media">
                     <img src="https://images.unsplash.com/photo-1587654780291-39c9404d746b?auto=format&fit=crop&w=700&q=80" alt="Nuvo Infant Care">
                     <span class="prog-age-tag">1.5 – 2.5 Years</span>
                 </div>
@@ -703,15 +835,15 @@
                     <div>
                         <h3>Nuvo</h3>
                         <div class="prog-tagline">Sensory Exploration & Warm Transition</div>
-                        <p>A gentle, secure sanctuary helping infants transition smoothly from home to social discovery with love and individual care.</p>
+                        <p>A gentle, secure sanctuary helping toddlers transition smoothly from home to social discovery with individual care and warmth.</p>
                     </div>
-                    <a href="#enquiryCard" class="btn-enquire-card" onclick="selectProg('NUVO')">Enquire for Nuvo</a>
+                    <a href="#enquiryCard" class="btn-prog-select" onclick="selectProg('NUVO')">Enquire for Nuvo</a>
                 </div>
             </div>
 
             <!-- Playgroup -->
             <div class="prog-card">
-                <div class="prog-image-wrap">
+                <div class="prog-media">
                     <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=700&q=80" alt="Playgroup Exploration">
                     <span class="prog-age-tag">2.5 – 3.5 Years</span>
                 </div>
@@ -719,15 +851,15 @@
                     <div>
                         <h3>Playgroup</h3>
                         <div class="prog-tagline">Social Immersion & Motor Agility</div>
-                        <p>Focuses on curiosity, language expansion, hands-on play, sensory art, and foundational motor habit development.</p>
+                        <p>Focuses on curiosity, language expansion, hands-on sensory play, tactile art, and foundational motor habit development.</p>
                     </div>
-                    <a href="#enquiryCard" class="btn-enquire-card" onclick="selectProg('PLAYGROUP')">Enquire for Playgroup</a>
+                    <a href="#enquiryCard" class="btn-prog-select" onclick="selectProg('PLAYGROUP')">Enquire for Playgroup</a>
                 </div>
             </div>
 
             <!-- Nursery -->
             <div class="prog-card">
-                <div class="prog-image-wrap">
+                <div class="prog-media">
                     <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=700&q=80" alt="Nursery Literacy">
                     <span class="prog-age-tag">3.5 – 4.5 Years</span>
                 </div>
@@ -735,15 +867,15 @@
                     <div>
                         <h3>Nursery</h3>
                         <div class="prog-tagline">Structured Inquiry & Phonics</div>
-                        <p>Introduces phonetic patterns, pre-math concepts, vocabulary expansion, spatial logic, and joyful collaborative routines.</p>
+                        <p>Introduces phonetic patterns, pre-math concepts, vocabulary expansion, spatial logic, and joyful collaborative learning habits.</p>
                     </div>
-                    <a href="#enquiryCard" class="btn-enquire-card" onclick="selectProg('NURSERY')">Enquire for Nursery</a>
+                    <a href="#enquiryCard" class="btn-prog-select" onclick="selectProg('NURSERY')">Enquire for Nursery</a>
                 </div>
             </div>
 
             <!-- Kindergarten -->
             <div class="prog-card">
-                <div class="prog-image-wrap">
+                <div class="prog-media">
                     <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=700&q=80" alt="Kindergarten Prep">
                     <span class="prog-age-tag">4.5 – 6.0 Years</span>
                 </div>
@@ -751,37 +883,78 @@
                     <div>
                         <h3>Kindergarten</h3>
                         <div class="prog-tagline">School Readiness & Confidence</div>
-                        <p>Junior & Senior KG prepares young leaders for formal primary schooling with reading fluency, early arithmetic, and public presentation.</p>
+                        <p>Prepares young leaders for formal primary schooling with reading fluency, early arithmetic, and confident verbal presentation.</p>
                     </div>
-                    <a href="#enquiryCard" class="btn-enquire-card" onclick="selectProg('KINDERGARTEN')">Enquire for Kindergarten</a>
+                    <a href="#enquiryCard" class="btn-prog-select" onclick="selectProg('KINDERGARTEN')">Enquire for Kindergarten</a>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Locate Us Section with Exact Address & Embedded Google Map -->
+    <section class="page-wrap" id="locate-us" style="padding-top: 0;">
+        <div class="section-header">
+            <span class="pill-category">Visit Our School</span>
+            <h2>Locate Us in Jammu</h2>
+            <p>Centrally located in New Rehari with convenient parking and peaceful, secure premises.</p>
+        </div>
+
+        <div class="locate-us-box">
+            <div class="locate-details">
+                <h3>KIDZEE New Rehari</h3>
+                <div class="locate-info-card">
+                    <p>
+                        📍 <strong>Address:</strong><br>
+                        H.No : 125, New Rehari,<br>
+                        Behind Shakuntla,<br>
+                        Near Trikuta City Scan,<br>
+                        Jammu, J&K - 180001
+                    </p>
+                </div>
+                <p style="margin-bottom: 16px; font-weight: 700; color: var(--kz-blue-dark);">
+                    📞 <strong>Helpline:</strong> <a href="tel:9086800000" style="color: var(--kz-blue); text-decoration: none;">+91 9086800000</a><br>
+                    ⏰ <strong>Campus Hours:</strong> Mon - Sat: 9:00 AM – 3:30 PM
+                </p>
+                <a href="https://maps.google.com/?q=New+Rehari+Behind+Shakuntla+Near+Trikuta+City+Scan+Jammu" target="_blank" class="btn-prog-select" style="background: var(--kz-yellow); color: var(--kz-blue-dark); text-align: center;">
+                    <i class="fa-solid fa-diamond-turn-right"></i> Get Driving Directions
+                </a>
+            </div>
+
+            <div class="map-frame-wrap">
+                <!-- Verified Google Map Embed targeting New Rehari, Behind Shakuntla, Jammu -->
+                <iframe
+                    src="https://maps.google.com/maps?q=New%20Rehari%20Behind%20Shakuntla%20Jammu%20180001&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Kidzee New Rehari Jammu Map">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
     <!-- Safety & Facilities Section -->
-    <div class="content-container" id="facilities" style="padding-top:0;">
-        <div class="safety-wrapper">
-            <h2 style="font-size:2.5rem; text-align:center; color:white; margin-bottom:10px;">Uncompromised Campus Safety in Jammu</h2>
-            <p style="text-align:center; color:#CBD5E1; font-weight:600; max-width:650px; margin:0 auto;">Adhering to strict international protocols so parents can enjoy complete peace of mind.</p>
+    <div class="page-wrap" id="safety" style="padding-top: 0;">
+        <div class="safety-band">
+            <h2 style="font-size: 2.5rem; text-align: center; color: var(--kz-yellow); margin-bottom: 10px;">Uncompromised Campus Safety in Jammu</h2>
+            <p style="text-align: center; color: #E8F2FC; font-weight: 600; max-width: 650px; margin: 0 auto;">Adhering to strict international protocols so parents can enjoy complete peace of mind.</p>
 
             <div class="safety-grid">
-                <div class="safety-card">
+                <div class="safety-item">
                     <i class="fa-solid fa-video"></i>
                     <h4>CCTV Monitored Premises</h4>
                     <p>Live monitored surveillance covering every classroom, foyer, and outdoor play space.</p>
                 </div>
-                <div class="safety-card">
+                <div class="safety-item">
                     <i class="fa-solid fa-shield-heart"></i>
                     <h4>Child-Safe Architecture</h4>
-                    <p>Ergonomic rounded-corner furniture, non-toxic materials, and anti-skid flooring.</p>
+                    <p>Ergonomic rounded-corner furniture, non-toxic learning materials, and anti-skid flooring.</p>
                 </div>
-                <div class="safety-card">
+                <div class="safety-item">
                     <i class="fa-solid fa-user-nurse"></i>
                     <h4>Dedicated Female Caretakers</h4>
-                    <p>All personal hygiene, washroom assistance, and snack routines are supervised by trained female attendants.</p>
+                    <p>Personal hygiene, washroom assistance, and snack routines are supervised by trained female attendants.</p>
                 </div>
-                <div class="safety-card">
+                <div class="safety-item">
                     <i class="fa-solid fa-kit-medical"></i>
                     <h4>Pediatric First-Aid Ready</h4>
                     <p>Emergency medical protocols with trained first-responders always present on-campus.</p>
@@ -791,7 +964,7 @@
     </div>
 
     <!-- Floating WhatsApp Action -->
-    <a href="https://wa.me/919086800000?text=Hello%20Kidzee%20Jammu,%20I%20would%20like%20to%20inquire%20about%20admissions" class="wa-float-bubble" target="_blank" title="WhatsApp +91 9086800000">
+    <a href="https://wa.me/919086800000?text=Hello%20Kidzee%20Jammu,%20I%20would%20like%20to%20inquire%20about%20preschool%20admissions" class="wa-float-btn" target="_blank" title="WhatsApp +91 9086800000">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
@@ -799,31 +972,31 @@
     <footer class="kz-footer" id="contact">
         <div class="footer-grid">
             <div>
-                <h4>KIDZEE JAMMU</h4>
-                <p>{{ settings.branch_address }}</p>
-                <p style="margin-top:16px;">
+                <h4>KIDZEE NEW REHARI, JAMMU</h4>
+                <p>H.No : 125, New Rehari, Behind Shakuntla, Near Trikuta City Scan, Jammu, J&K - 180001</p>
+                <p style="margin-top: 16px;">
                     <strong>Admissions Helpline:</strong> +91 9086800000<br>
                     <strong>WhatsApp Desk:</strong> +91 9086800000<br>
-                    <strong>Official Email:</strong> {{ settings.branch_email }}
+                    <strong>Official Email:</strong> admissions.jammu@kidzee.org
                 </p>
             </div>
             <div>
                 <h4>CAMPUS HOURS</h4>
-                <p>{{ settings.visiting_hours }}</p>
-                <p style="margin-top:14px; font-size:0.9rem;">To maintain classroom concentration, campus walkthroughs are scheduled by prior appointment.</p>
+                <p>Monday to Saturday: 9:00 AM – 3:30 PM</p>
+                <p style="margin-top: 14px; font-size: 0.9rem;">To maintain student concentration and safety, campus walkthroughs are scheduled by prior appointment.</p>
             </div>
             <div>
                 <h4>STAFF MANAGEMENT</h4>
-                <p>Authorised faculty and administrative portal for monitoring traffic and admission leads:</p>
-                <p style="margin-top:14px;">
-                    <a href="/admin/login" style="color:var(--kz-yellow); font-weight:800; text-decoration:none;">
+                <p>Authorized faculty and administrative portal for monitoring traffic and admission leads:</p>
+                <p style="margin-top: 14px;">
+                    <a href="/admin/login" style="color: var(--kz-yellow); font-weight: 800; text-decoration: none;">
                         Access Staff Portal & CRM &rarr;
                     </a>
                 </p>
             </div>
         </div>
         <div class="footer-bottom">
-            &copy; 2026 Tech Nova Jammu.
+            &copy; 2026 Tech Nova Jammu. Certified Early Childhood Education Portal.
         </div>
     </footer>
 
@@ -837,6 +1010,7 @@
             }
         }
 
+        // Form submission with automatic WhatsApp forwarding
         document.getElementById('enquiryForm').addEventListener('submit', async function(e) {
             e.preventDefault();
 
@@ -849,8 +1023,6 @@
             const payload = {
                 parent_name: document.getElementById('parent_name').value,
                 phone: document.getElementById('phone').value,
-                email: "",
-                child_name: "",
                 child_dob_or_age: document.getElementById('child_dob').value,
                 programme_code: document.getElementById('programme_code').value,
                 visit_date: document.getElementById('visit_date').value,
